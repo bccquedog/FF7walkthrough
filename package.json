@@ -1,0 +1,10 @@
+{
+  "name": "ffvii-field-guide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive walkthrough companion for the original Final Fantasy VII",
+  "scripts": {
+    "start": "python3 -m http.server 4173 --directory dist",
+    "test": "node validate.cjs"
+  }
+}
