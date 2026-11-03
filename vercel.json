@@ -10,6 +10,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/ff7/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/ff7/:path*",
       "destination": "/:path*"
     }
