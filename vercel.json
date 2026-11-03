@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/ff7",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/ff7/:path*",
+      "destination": "/:path*"
+    }
+  ]
+}

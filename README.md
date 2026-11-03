@@ -12,6 +12,14 @@ python3 -m http.server 4173 --directory dist
 
 Open `http://localhost:4173`. Alternatively, serve `dist/` using any static web host.
 
+## Vercel hosting
+
+The `ff7walkthrough` Vercel project is connected to this repository. `vercel.json` serves `dist/` directly without installing dependencies or running a build. Both the standalone root and `/ff7` are supported; the page sets its asset base to `/ff7/` when mounted there.
+
+The `nws` project owns `nowindowshopping.com`. Its project-level route proxies only `/ff7` and its child paths to `https://ff7walkthrough.vercel.app/ff7/`, preserving the main NWS deployment and existing project routes. The domain retains its existing canonical redirect to `www.nowindowshopping.com`.
+
+Journals are local to each origin. To move a journal from the ChatGPT Sites address, export it from **Journal and settings**, then import the JSON at the new address.
+
 ## Visual direction
 
 The interface draws on the 1997 PlayStation release: deep blue menu windows, silver frames, a Meteor-inspired mark, cinematic Midgar artwork and illustrated party portraits. The artwork is original generated fan art, not extracted game graphics. Generation prompts are in `ART_DIRECTION.txt`.
