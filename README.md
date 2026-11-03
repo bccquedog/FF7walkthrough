@@ -12,6 +12,10 @@ python3 -m http.server 4173 --directory dist
 
 Open `http://localhost:4173`. Alternatively, serve `dist/` using any static web host.
 
+## Visual direction
+
+The interface draws on the 1997 PlayStation release: deep blue menu windows, silver frames, a Meteor-inspired mark, cinematic Midgar artwork and illustrated party portraits. The artwork is original generated fan art, not extracted game graphics. Generation prompts are in `ART_DIRECTION.txt`.
+
 ## Features
 
 - 33 story chapters, 179 parent objectives and 420 detailed navigation checkpoints.
@@ -31,7 +35,7 @@ Progress is browser-local. Backups include objectives, detailed checkpoints, not
 - `dist/detailed-route.js`: detailed navigation and expanded chapter inventories.
 - `dist/app.js`: core navigation, rendering, persistence and backup validation.
 - `dist/extras-ui.js`: item register, recruitment, stable planner and detailed-checkpoint interactions.
-- `dist/style.css`: responsive styling and original vector-city illustration styling.
+- `dist/style.css`: responsive styling and component layout. `dist/ffvii-theme.css` supplies the original-game visual direction.
 - `validate.cjs`: dependency-free data/rendering, state compatibility and breeding-planner checks.
 
 ## Validate
@@ -53,4 +57,4 @@ The register distinguishes permanent losses, conditional/limited windows, later 
 
 ## Attribution
 
-Unofficial fan companion, not affiliated with Square Enix. Final Fantasy VII, its characters and game content belong to their respective owners. The interface, walkthrough prose and vector city illustration are original. Linked guides remain with their authors; no book scans or personal photos are bundled.
+Unofficial fan companion, not affiliated with Square Enix. Final Fantasy VII, its characters and game content belong to their respective owners. The interface and walkthrough prose are original. Midgar artwork and character portraits are original generated fan art inspired by the 1997 designs. Linked guides remain with their authors; no book scans or personal photos are bundled.
