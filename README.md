@@ -24,6 +24,10 @@ Journals are local to each origin. To move a journal from the ChatGPT Sites addr
 
 The interface draws on the 1997 PlayStation release: deep blue menu windows, silver frames, a Meteor-inspired mark, cinematic Midgar artwork and illustrated party portraits. The artwork is original generated fan art, not extracted game graphics. Generation prompts are in `ART_DIRECTION.txt`.
 
+## Mobile use
+
+Phones and small tablets have a fixed Guide / Chapters / Search / More menu, a dismissible chapter drawer, 16px reading text, larger checklist controls, sticky chapter tabs, and single-column collection and breeding tools. Form text stays at least 16px to avoid automatic focus zoom on iOS. Safe-area padding keeps controls clear of notches and home indicators.
+
 ## Features
 
 - 33 story chapters, 179 parent objectives and 420 detailed navigation checkpoints.
