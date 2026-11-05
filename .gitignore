@@ -4,3 +4,7 @@ node_modules/
 .env.*
 *.tar.gz
 .openai/
+
+# Generated from the tracked guide during build.
+lib/knowledge.json
+.vercel/

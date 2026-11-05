@@ -4,7 +4,7 @@ An interactive, independently written companion for the **1997 original Final Fa
 
 ## Run locally
 
-No installation or build step is required. With Python 3 installed:
+For the static walkthrough alone, no installation or build step is required. With Python 3 installed:
 
 ```sh
 python3 -m http.server 4173 --directory dist
@@ -14,7 +14,7 @@ Open `http://localhost:4173`. Alternatively, serve `dist/` using any static web 
 
 ## Vercel hosting
 
-The `ff7walkthrough` Vercel project is connected to this repository. `vercel.json` serves `dist/` directly without installing dependencies or running a build. Both the standalone root and `/ff7` are supported; the page sets its asset base to `/ff7/` when mounted there.
+The `ff7walkthrough` Vercel project is connected to this repository. `vercel.json` installs the locked dependencies, regenerates the OG knowledge corpus, serves `dist/`, and deploys the server-side MAKO endpoint. Both the standalone root and `/ff7` are supported; the page sets its asset base to `/ff7/` when mounted there.
 
 The `nws` project owns `nowindowshopping.com`. Its project-level route proxies only `/ff7` and its child paths to `https://ff7walkthrough.vercel.app/ff7/`, preserving the main NWS deployment and existing project routes. The domain retains its existing canonical redirect to `www.nowindowshopping.com`.
 
@@ -23,6 +23,26 @@ Journals are local to each origin. To move a journal from the ChatGPT Sites addr
 ## Visual direction
 
 The interface draws on the 1997 PlayStation release: deep blue menu windows, silver frames, a Meteor-inspired mark, cinematic Midgar artwork and illustrated party portraits. The artwork is original generated fan art, not extracted game graphics. Generation prompts are in `ART_DIRECTION.txt`.
+
+## MAKO · FFVII expert
+
+MAKO is a real OpenAI-powered assistant built with AI SDK 7 `ToolLoopAgent` and `gpt-6-luna` (override with `OPENAI_MODEL`). It receives the open chapter and next unchecked objective, searches all 33 researched chapters and the collection/recruitment/breeding data, and can verify missing facts with OpenAI web search. It defaults to OG, separates Remake/Rebirth/Compilation, and keeps future plot details protected unless the player enables them. Game state and personal notes are never uploaded automatically. Answers are rendered as text and validated links, never trusted HTML.
+
+Use **Ask MAKO** in the desktop header or **MAKO** in the mobile dock. Conversation history stays in session storage in the current tab, separate from the field journal. Each request sends at most 16 recent turns to the server. The assistant does not edit the player's checks or notes and cannot read actual game saves.
+
+For local development, use the ignored `.env.local` key file and run:
+
+```sh
+npm ci
+npm run build
+npm run dev
+```
+
+The local server serves both the guide and `/api/expert`. Python's static server cannot run AI requests. Vercel requires `OPENAI_API_KEY` as a server-side secret; never expose it in `dist/`, a public-prefixed environment variable, source archives, or Git. The original Sites frontend calls `https://www.nowindowshopping.com/ff7/api/expert`, with CORS restricted to the guide origins. No key is embedded in either frontend.
+
+The endpoint validates messages and chapters, limits input and output sizes, bounds the tool loop to five steps and requests to 75 seconds, and applies an in-memory per-IP burst limit (8/minute per warm instance). This is not a globally shared quota; use platform firewall rules for stricter traffic controls. OpenAI API usage is billed to the configured project. Request content and provider errors are not logged; only a failure name and status code are logged. `store:false` disables response storage through the Responses API; normal provider data policies still apply.
+
+Checks: `npm test`, `npm run test:expert`, and browser QA. The API tests cover retrieval, aliases, future chapter filtering, input validation, allowed origins, methods and missing-key behavior. Live local checks covered a Shinra stair/lobby question and researched Rebirth Rufus tactics.
 
 ## Mobile use
 

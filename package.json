@@ -5,6 +5,14 @@
   "description": "Interactive walkthrough companion for the original Final Fantasy VII",
   "scripts": {
     "start": "python3 -m http.server 4173 --directory dist",
-    "test": "node validate.cjs"
+    "test": "node validate.cjs",
+    "dev": "node --env-file=.env.local scripts/dev-server.mjs",
+    "build": "node scripts/build-knowledge.cjs",
+    "test:expert": "node --test tests/expert.test.mjs"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^4.0.109",
+    "ai": "^7.0.163",
+    "zod": "^4.6.7"
   }
 }
